@@ -1,5 +1,26 @@
 
 
+# How-to, compile and run:
+
+
+Note:
+
+
+There is a Windows version (original) built under Windows 10 with the C++ compiler libraries handled by VisualStudio, need ++17 up.
+
+For Linux, the file path needs are different, and I couldn't get Bazel working with C++17, so there the process and source file is a bit different.  You will find directions for that version under directory `/Linux__sandbox`.
+
+For Windows, assuming your C++ (17...) libraries are good, and you have Npm installed, you can install Bazel/Baselisk globally with Npm, and then, from this directory:
+
+`bazel run cpp:hex-parse`
+
+
+
+______________________________________________________________________
+
+
+# Exercise Requirements:
+
 
 You have been given a data file containing a list of known non-local
 metaparticles.
