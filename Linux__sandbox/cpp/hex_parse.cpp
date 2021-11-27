@@ -1,20 +1,10 @@
 #include <sys/stat.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#include <iomanip>
 #include <filesystem>
 #include <fstream>
 #include <string>
-#include <cstdio>
 #include <vector>
 #include <iterator>
-#include <algorithm>
-#include <sstream>
-#include <iomanip>
-
-#include <experimental/any>
-#include <experimental/filesystem>
 
 
 using namespace std;
