@@ -2,15 +2,19 @@
 
 # How-to, compile and run:
 
+There is a Windows version and a Linux version.  
 
-Note:
+
+## Linux:
+
+The Linux version and instructions can be found in the `\Linux__sandbox` directory.
 
 
-There is a Windows version (original) built under Windows 10 with the C++ compiler libraries handled by VisualStudio, need ++17 up.
+## Windows:
 
-For Linux, the file path needs are different, and I couldn't get Bazel working with C++17, so there the process and source file is a bit different.  You will find directions for that version under directory `/Linux__sandbox`.
+Assuming your C++ 17 libraries are good (VisualStudio handles this very well), and you have Npm installed, you can install Bazel/Baselisk globally with Npm (`npm i -g bazel/bazelisk`).  
 
-For Windows, assuming your C++ (17...) libraries are good, and you have Npm installed, you can install Bazel/Baselisk globally with Npm, and then, from this directory:
+Then, from this directory:
 
 `bazel run cpp:hex-parse`
 

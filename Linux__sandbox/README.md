@@ -1,6 +1,5 @@
 # How-to, compile and run:
 
-
 If you are in Debian and have g++ working with v17 installed and working:
 
 From this directory:
@@ -10,3 +9,6 @@ From this directory:
 and then (assuming no errors):
 
 `./hex`
+
+
+I will work on configuring the Bazel toolchain under Debian. For now I've retreated to using g++ from the command line.
