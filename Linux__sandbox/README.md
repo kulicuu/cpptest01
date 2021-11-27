@@ -1,6 +1,6 @@
 # How-to, compile and run:
 
-If you are in Debian and have g++ working with v17 installed and working:
+If you are in Debian and have g++ working with ++17 installed and working:
 
 From this directory:
 
