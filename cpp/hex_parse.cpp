@@ -7,20 +7,11 @@
 #include <iterator>
 
 
-
-
 using namespace std;
 using namespace std::filesystem;
 
 
-size_t stat3 (std::string filepath) {
-    struct stat buf;
-    if (stat(filepath.c_str(), &buf) == -1 ) {
-        std::cout << "stat failed" << std::endl;
-    } else {
-        return buf.st_size;
-    }
-}
+const char * filepath = "../../../../../cpp\\cpptest01.bin";
 
 
 typedef union
@@ -43,45 +34,46 @@ uint32 deserialize_uint32(unsigned char *buffer)
 
 
 int main () {
-    std::string filepath = "../../../../../cpp\\cpptest01.bin";
-    size_t size = stat3(filepath);
+    struct stat buf;
+    if (stat(filepath, &buf) == -1 ) {
+        cout << "stat failed" << endl;
+    } else {
+        cout << "file size: " << buf.st_size << endl;
+    }
 
-    vector<unsigned char> bytes2(size, 0);
-    ifstream infile(filepath.c_str(), ios::in | ios::binary);
-    infile.read((char*)&bytes2[0], bytes2.size());
+    vector<unsigned char> vector_bytes(buf.st_size, 0);
+    ifstream infile(filepath, ios::in | ios::binary);
+    infile.read((char*)&vector_bytes[0], vector_bytes.size());
 
-    unsigned char buff_1[4];
-    unsigned char buff_2[6];
-    unsigned char buff_3[8];
+    unsigned char buff_int[4];
+    unsigned char buff_text[6];
+    unsigned char buff_float[8];
 
-    for (int m = 0; m < size; m++) {
+    for (int m = 0; m < buf.st_size; m+=18) {
         
-        if ((m == 0) || (m % 18 == 0)) {
-            // parse and print results
-
-            for (int i = 0; i < 4; i++) {
-                buff_1[i] = bytes2[m + i];
-            }
-
-            for (int i = 0; i < 6; i++) {
-                buff_2[i] = bytes2[i + 4 + m];
-            }
-
-            for (int i = 0; i < 8; i++) {
-                buff_3[i] = bytes2[i + 10 + m];
-            }
-
-            FLOATUNION_t myFloat;
-
-            for (int i = 0; i < 8; i++) {
-                myFloat.bytes[i] = buff_3[i];
-            }
-
-            cout << deserialize_uint32(buff_1) << endl;
-            cout << buff_2 << endl;
-            cout << myFloat.number << endl;
-            cout << endl;
+        for (int i = 0; i < 4; i++) {
+            buff_int[i] = vector_bytes[m + i];
         }
+
+        for (int i = 0; i < 6; i++) {
+            buff_text[i] = vector_bytes[i + 4 + m];
+        }
+
+        for (int i = 0; i < 8; i++) {
+            buff_float[i] = vector_bytes[i + 10 + m];
+        }
+
+        FLOATUNION_t float_union;
+
+        for (int i = 0; i < 8; i++) {
+            float_union.bytes[i] = buff_float[i];
+        }
+
+        cout << deserialize_uint32(buff_int) << endl;
+        cout << buff_text << endl;
+        cout << float_union.number << endl;
+        cout << endl;
+
     }
 
     return 0;
