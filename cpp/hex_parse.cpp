@@ -16,8 +16,8 @@ const char * filepath = "../../../../../cpp\\cpptest01.bin";
 
 typedef union
 {
-    float number;
-    uint8_t bytes[8];
+    double number;
+    unsigned char bytes[8];
 } FLOATUNION_t;
 
 
@@ -60,6 +60,8 @@ int main () {
         }
 
         for (int i = 0; i < 8; i++) {
+
+
             buff_float[i] = vector_bytes[i + 10 + m];
         }
 

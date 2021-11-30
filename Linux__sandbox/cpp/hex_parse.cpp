@@ -62,7 +62,6 @@ int main () {
         }
 
         for (int i = 0; i < 8; i++) {
-            // buff_float[i] = vector_bytes[i + 10 + m];
             buff_float[i] = vector_bytes[i + 10 + m];
         }
 
@@ -75,7 +74,6 @@ int main () {
         cout << deserialize_uint32(buff_int) << endl;
         cout << buff_text << endl;
         cout << float_union.number << endl;
-        // cout << "alt: " << float(float_union.bytes) << endl;
         cout << endl;
 
     }
