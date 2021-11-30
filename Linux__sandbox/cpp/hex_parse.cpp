@@ -16,7 +16,7 @@ const char * filepath = "./cpp/cpptest01.bin";
 
 typedef union
 {
-    float number;
+    double number;
     unsigned char bytes[8];
 } FLOATUNION_t;
 
@@ -64,7 +64,7 @@ int main () {
         for (int i = 0; i < 8; i++) {
             // buff_float[i] = vector_bytes[i + 10 + m];
             buff_float[i] = vector_bytes[i + 10 + m];
-            // cout << "float byte: " << setw(2) << setfill('0') << hex << int(vector_bytes[i + 10 + m]) << endl;
+            cout << "float byte: " << setw(2) << setfill('0') << hex << int(vector_bytes[i + 10 + m]) << endl;
 
         }
 
