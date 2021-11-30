@@ -17,7 +17,7 @@ const char * filepath = "./cpp/cpptest01.bin";
 typedef union
 {
     float number;
-    uint8_t bytes[8];
+    unsigned char bytes[8];
 } FLOATUNION_t;
 
 
@@ -34,6 +34,8 @@ uint32 deserialize_uint32(unsigned char *buffer)
 
 
 int main () {
+
+
     struct stat buf;
     if (stat(filepath, &buf) == -1 ) {
         cout << "stat failed" << endl;
@@ -60,7 +62,10 @@ int main () {
         }
 
         for (int i = 0; i < 8; i++) {
+            // buff_float[i] = vector_bytes[i + 10 + m];
             buff_float[i] = vector_bytes[i + 10 + m];
+            // cout << "float byte: " << setw(2) << setfill('0') << hex << int(vector_bytes[i + 10 + m]) << endl;
+
         }
 
         FLOATUNION_t float_union;
@@ -72,6 +77,7 @@ int main () {
         cout << deserialize_uint32(buff_int) << endl;
         cout << buff_text << endl;
         cout << float_union.number << endl;
+        // cout << "alt: " << float(float_union.bytes) << endl;
         cout << endl;
 
     }
